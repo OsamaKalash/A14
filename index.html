@@ -6,19 +6,15 @@
     <script>
         function setCookie(cname,cvalue,exdays) {
             var d = new Date();
-            d.setTime(d.getTime() + (exdays2460601000));
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
             var expires = "expires=" + d.toGMTString();
-            // you need the spage after each name/value pair
-            var myCookie = cname + "=" + cvalue + "; " + expires + "; path=/";
-            document.write(' 3) The Value of myCookie is ' + myCookie+'<br/>');
-            document.cookie = myCookie;
-            document.write('Copyright (placeholder)');
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
         }
+
         function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
             var ca = decodedCookie.split(';');
-            document.write(' 2) The Value of name is ' + name);
             for(var i = 0; i < ca.length; i++) {
                 var c = ca[i];
                 while (c.charAt(0) == ' ') {
@@ -30,12 +26,11 @@
             }
             return "";
         }
+
         function checkCookie() {
             var user=getCookie("username");
-            document.write(' 1) The Value of user is ' + user+'<br/>');
             if (user != "") {
                 alert("Welcome again " + user);
-                document.write('Copyright (placeholder)');
             } else {
                 user = prompt("Please enter your name:","");
                 if (user != "" && user != null) {
